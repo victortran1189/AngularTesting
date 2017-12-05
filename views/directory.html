@@ -1,0 +1,22 @@
+<div class="content">
+  <button ng-click="order = 'name'"> Order By Name </button>
+  <button ng-click="order = 'level'"> Order By Skill Level </button>
+    <input type="text" ng-model="search" />
+  <ul>
+    <li ng-repeat="gamer in gamers | orderBy: order | filter: search">
+      <img ng-src="{{gamer.thumb}}" style="margin: -12px 10px 0 0; float: left; width:50px;"
+       ng-show="gamer.thumb" />
+       <h3>{{gamer.name}} - {{gamer.bounty | currency: '₪'}} </h3>
+       <div class="remove" ng-click="removeGamer(gamer)">x </div>
+       <span> {{gamer.level}} </span>
+      </li>
+  </ul>
+  <form ng-submit="addGamer()">
+      <input type="text" placeholder="name" ng-model="newgamer.name"/>
+      <input type="text" placeholder="level" ng-model="newgamer.level"/>
+      <input type="text" placeholder="bounty" ng-model="newgamer.bounty"/>
+      <input type="submit" value="Add New Gamer" />
+  </form>
+</div>
+
+</div>
