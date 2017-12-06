@@ -31,7 +31,7 @@ $scope.addGamer = function(){
 
 
    angular.forEach($scope.gamers, function(gamers) {
-          if (newGamerName == gamers.name) {
+          if (newGamerName.toUpperCase() == gamers.name.toUpperCase()) {
               matches = false;
               $scope.message = 'This is a duplicate!';
           }
@@ -43,6 +43,7 @@ $scope.addGamer = function(){
             level: $scope.newgamer.level,
             bounty: parseInt($scope.newgamer.bounty),
           });
+          $scope.message = '';
 
 
 $scope.newgamer.name = "";

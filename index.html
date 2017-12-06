@@ -25,6 +25,8 @@
           </li>
       </ul>
       <form ng-submit="addGamer()" >
+        <div ng-if="message">{{ message }}</div>
+
           <input type="text" placeholder="name" ng-model="newgamer.name"/>
           <input type="text" placeholder="level" ng-model="newgamer.level"/>
           <input type="text" placeholder="bounty" ng-model="newgamer.bounty"/>
