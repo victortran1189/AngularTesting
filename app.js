@@ -25,25 +25,40 @@ $scope.removeGamer = function(gamer){
 
 //how to add to array
 $scope.addGamer = function(){
-  $scope.gamers.push({
-    name: $scope.newgamer.name,
-    level: $scope.newgamer.level,
-    bounty: parseInt($scope.newgamer.bounty),
-    available: true,
-  });
+
+   var newGamerName = $scope.newgamer.name;
+   var matches = true;
+
+
+   angular.forEach($scope.gamers, function(gamers) {
+          if (newGamerName == gamers.name) {
+              matches = false;
+              $scope.message = 'This is a duplicate!';
+          }
+      });
+
+      if (matches != false) {
+          $scope.gamers.push({
+            name: $scope.newgamer.name,
+            level: $scope.newgamer.level,
+            bounty: parseInt($scope.newgamer.bounty),
+          });
+
 
 $scope.newgamer.name = "";
 $scope.newgamer.level = "";
 $scope.newgamer.bounty = "";
 
-
+  }
 }
+
+
+
 
 
 $scope.gamers = [
   {
     name:"Victor",
-    belt:"green",
     level: "Pro",
     bounty: 10000000000,
     available: true,
