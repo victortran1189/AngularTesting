@@ -15,7 +15,7 @@ var myGamerApp = angular.module("myGamerApp", []);
 //
 // }]);
 
-myGamerApp.controller("GamerController", ['$scope', function($scope){
+myGamerApp.controller("GamerController", ['$scope', '$timeout', function($scope, $timeout){
 
 //how to remove from array
 $scope.removeGamer = function(gamer){
@@ -35,7 +35,10 @@ $scope.addGamer = function(){
               matches = false;
               $scope.message = 'This is a duplicate!';
           }
-      });
+          $timeout(function() {
+              $scope.message = "";
+                }, 3000);
+          });
 
       if (matches != false) {
           $scope.gamers.push({
