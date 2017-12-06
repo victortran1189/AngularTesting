@@ -1,19 +1,19 @@
-var myGamerApp = angular.module("myGamerApp", ['ngRoute']);
+var myGamerApp = angular.module("myGamerApp", []);
 
-myGamerApp.config(['$routeProvider', function($routeProvider){
+//myGamerApp.config(['$routeProvider', function($routeProvider){
 
-  $routeProvider
-    .when('/home', {
-      templateUrl: 'view/home.html'
-    })
-    .when('/directory', {
-      templateUrl: 'view/directory.html'
-      controller:'GamerController'
-    }).otherwise({
-      redirectTo:'/home'
-    });
-
-}]);
+//  $routeProvider
+//     .when('/home', {
+//       templateUrl: 'view/home.html'
+//     })
+//     .when('/directory', {
+//       templateUrl: 'view/directory.html'
+//       controller:'GamerController'
+//     }).otherwise({
+//       redirectTo:'/home'
+//     });
+//
+// }]);
 
 myGamerApp.controller("GamerController", ['$scope', function($scope){
 
