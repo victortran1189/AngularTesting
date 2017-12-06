@@ -15,51 +15,48 @@ var myGamerApp = angular.module("myGamerApp", []);
 //
 // }]);
 
-myGamerApp.controller("GamerController", ['$scope', '$timeout','GamerService', function($scope, $timeout,GamerService){
+myGamerApp.controller("GamerController", ['$scope', '$timeout', 'GamerService', function($scope, $timeout, GamerService) {
 
-//how to remove from array
-$scope.removeGamer = function(gamer){
-  var removeGamer = $scope.gamers.indexOf(gamer);
-  $scope.gamers.splice(removeGamer, 1)
-};
+  //how to remove from array
+  $scope.removeGamer = function(gamer) {
+    var removeGamer = $scope.gamers.indexOf(gamer);
+    $scope.gamers.splice(removeGamer, 1)
+  };
 
-//how to add to array
-$scope.addGamer = function(){
+  //how to add to array
+  $scope.addGamer = function() {
 
-   var newGamerName = $scope.newgamer.name;
-   var matches = true;
-
-
-   angular.forEach($scope.gamers, function(gamers) {
-          if (newGamerName.toUpperCase() == gamers.name.toUpperCase()) {
-              matches = false;
-              $scope.message = 'This is a duplicate!';
-          }
-          $timeout(function() {
-              $scope.message = "";
-                }, 3000);
-          });
-
-      if (matches != false) {
-          $scope.gamers.push({
-            name: $scope.newgamer.name,
-            level: $scope.newgamer.level,
-            bounty: parseInt($scope.newgamer.bounty),
-          });
-          $scope.message = '';
+    var newGamerName = $scope.newgamer.name;
+    var matches = true;
 
 
-$scope.newgamer.name = "";
-$scope.newgamer.level = "";
-$scope.newgamer.bounty = "";
+    angular.forEach($scope.gamers, function(gamers) {
+      if (newGamerName.toUpperCase() == gamers.name.toUpperCase()) {
+        matches = false;
+        $scope.message = 'This is a duplicate!';
+      }
+      $timeout(function() {
+        $scope.message = "";
+      }, 3000);
+    });
 
+    if (matches != false) {
+      $scope.gamers.push({
+        name: $scope.newgamer.name,
+        level: $scope.newgamer.level,
+        bounty: parseInt($scope.newgamer.bounty),
+      });
+      $scope.message = '';
+
+
+      $scope.newgamer.name = "";
+      $scope.newgamer.level = "";
+      $scope.newgamer.bounty = "";
+
+    }
   }
-}
 
 
-
-
-
-$scope.gamers = GamerService.getGamersList();
+  $scope.gamers = GamerService.getGamersList();
 
 }]);
