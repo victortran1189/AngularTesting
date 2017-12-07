@@ -6,6 +6,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>﻿
     <script src="app.js"> </script>
     <script src="GamerService.js"> </script>
+    <script src="TotalService.js"> </script>
   </head>
 
   <body>
@@ -14,7 +15,9 @@
       <div ng-controller="GamerController">
       <button ng-click="order = 'name'"> Order By Name </button>
       <button ng-click="order = 'level'"> Order By Skill Level </button>
-        <input type="text" ng-model="search" />
+      <input type="text" ng-model="search" />
+
+
       <ul>
         <li ng-repeat="gamer in gamers | orderBy: order | filter: search">
           <img ng-src="{{gamer.thumb}}" style="margin: -12px 10px 0 0; float: left; width:50px;"
@@ -23,13 +26,14 @@
            <div class="remove" ng-click="removeGamer(gamer)">x </div>
            <span> {{gamer.level}} </span>
           </li>
+          <div>  Total - {{getTotal}}</div>
+
       </ul>
       <form ng-submit="addGamer()" >
         <div ng-if="message">{{ message }}</div>
-
-          <input type="text" placeholder="name" ng-model="newgamer.name"/>
-          <input type="text" placeholder="level" ng-model="newgamer.level"/>
-          <input type="text" placeholder="bounty" ng-model="newgamer.bounty"/>
+          <input type="text" placeholder="name" ng-model="newgamer.name" ng-required="true"/>
+          <input type="text" placeholder="level" ng-model="newgamer.level" ng-required="true"/>
+          <input type="text" placeholder="bounty" ng-model="newgamer.bounty" ng-required="true"/>
           <input type="submit" value="Add New Gamer" />
       </form>
       </div>

@@ -15,7 +15,11 @@ var myGamerApp = angular.module("myGamerApp", []);
 //
 // }]);
 
-myGamerApp.controller("GamerController", ['$scope', '$timeout', 'GamerService', function($scope, $timeout, GamerService) {
+myGamerApp.controller("GamerController", ['$scope', '$timeout', 'GamerService', 'TotalService', function($scope, $timeout, GamerService, TotalService) {
+
+
+
+
 
   //how to remove from array
   $scope.removeGamer = function(gamer) {
@@ -23,9 +27,11 @@ myGamerApp.controller("GamerController", ['$scope', '$timeout', 'GamerService', 
     $scope.gamers.splice(removeGamer, 1)
   };
 
+
+
+
   //how to add to array
   $scope.addGamer = function() {
-
     var newGamerName = $scope.newgamer.name;
     var matches = true;
 
@@ -41,7 +47,9 @@ myGamerApp.controller("GamerController", ['$scope', '$timeout', 'GamerService', 
     });
 
     if (matches != false) {
+
       $scope.gamers.push(GamerService.createNewGamerObject($scope.newgamer));
+      $scope.getTotal = TotalService.getTotalBounty($scope.gamers);
 
 
       $scope.newgamer.name = "";
@@ -51,7 +59,25 @@ myGamerApp.controller("GamerController", ['$scope', '$timeout', 'GamerService', 
     }
   }
 
+// add total bounty together
+
+// $scope.getTotal = function(){
+//    var total = 0;
+//    for(var i = 0; i < $scope.gamers.length; i++){
+//        total += $scope.gamers[i].bounty;
+//    }
+//
+//    return total;
+//
+// }
+
 
   $scope.gamers = GamerService.getGamersList();
+
+
+  $scope.getTotal = TotalService.getTotalBounty($scope.gamers);
+
+
+
 
 }]);
