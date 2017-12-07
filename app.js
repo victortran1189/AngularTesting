@@ -59,6 +59,7 @@ myGamerApp.controller("GamerController", ['$scope', '$timeout', 'GamerService', 
     }
   }
 
+
 // add total bounty together
 
 // $scope.getTotal = function(){
