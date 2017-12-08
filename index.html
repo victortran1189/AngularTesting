@@ -26,7 +26,7 @@
            <div class="remove" ng-click="removeGamer(gamer)">x </div>
            <span> {{gamer.level}} </span>
           </li>
-          <div>  Total - {{getTotal}}</div>
+          <div>  Bounty Total - {{getTotal | currency: '₪' }}</div>
 
       </ul>
       <form ng-submit="addGamer()" >

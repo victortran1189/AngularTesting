@@ -6,6 +6,7 @@ myGamerApp.service('TotalService', function() {
           total += gamers[i].bounty;
       }
 
+      772489
       return total;
 
       }
