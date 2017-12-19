@@ -1,23 +1,13 @@
 var myGamerApp = angular.module("myGamerApp", []);
 
-//myGamerApp.config(['$routeProvider', function($routeProvider){
-
-//  $routeProvider
-//     .when('/home', {
-//       templateUrl: 'view/home.html'
-//     })
-//     .when('/directory', {
-//       templateUrl: 'view/directory.html'
-//       controller:'GamerController'
-//     }).otherwise({
-//       redirectTo:'/home'
-//     });
-//
-// }]);
-
-myGamerApp.controller("GamerController", ['$scope', '$timeout', 'GamerService', 'TotalService', function($scope, $timeout, GamerService, TotalService) {
 
 
+myGamerApp.controller("GamerController", ['$scope', '$timeout', 'GamerService', 'TotalService', function ($scope, $timeout, GamerService, TotalService) {
+
+$scope.test="target this";
+
+$scope.title="hi";
+$scope.greeting = 'Hello World!';
 
 
 
@@ -26,6 +16,7 @@ myGamerApp.controller("GamerController", ['$scope', '$timeout', 'GamerService', 
     var removeGamer = $scope.gamers.indexOf(gamer);
     $scope.gamers.splice(removeGamer, 1)
   };
+
 
 
 
@@ -49,7 +40,9 @@ myGamerApp.controller("GamerController", ['$scope', '$timeout', 'GamerService', 
     if (matches != false) {
 
       $scope.gamers.push(GamerService.createNewGamerObject($scope.newgamer));
+
       $scope.getTotal = TotalService.getTotalBounty($scope.gamers);
+      $scope.getTotalGamers = TotalService.getTotalCount($scope.gamers);
 
 
       $scope.newgamer.name = "";
@@ -59,21 +52,23 @@ myGamerApp.controller("GamerController", ['$scope', '$timeout', 'GamerService', 
     }
   }
 
-
-// add total bounty together
-
-// $scope.getTotal = function(){
-//    var total = 0;
-//    for(var i = 0; i < $scope.gamers.length; i++){
-//        total += $scope.gamers[i].bounty;
-//    }
-//
-//    return total;
-//
-// }
+  // $scope.getTotalGamers = function(){
+  //    var total = 0;
+  //    for(var i = 0; i < $scope.gamers.length; i++){
+  //        total = $scope.gamers.length;
+  //    }
+  //
+  //    return total;
+  //
+  // }
 
 
-  $scope.gamers = GamerService.getGamersList();
+
+  $scope.gamers = GamerService.getGamersList(); //list needs to be here in order for TotalCounters below
+
+
+
+  $scope.getTotalGamers = TotalService.getTotalCount($scope.gamers);
 
 
   $scope.getTotal = TotalService.getTotalBounty($scope.gamers);
