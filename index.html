@@ -7,11 +7,14 @@
     <script src="app.js"> </script>
     <script src="GamerService.js"> </script>
     <script src="TotalService.js"> </script>
+
   </head>
 
   <body>
     <header ng-include="'header.html'"> </header>
     <div class="content">
+
+
       <div ng-controller="GamerController">
       <button ng-click="order = 'name'"> Order By Name </button>
       <button ng-click="order = 'level'"> Order By Skill Level </button>
@@ -26,6 +29,9 @@
            <div class="remove" ng-click="removeGamer(gamer)">x </div>
            <span> {{gamer.level}} </span>
           </li>
+
+
+          <div> Total Gamers - {{getTotalGamers}} </div>
           <div>  Bounty Total - {{getTotal | currency: '₪' }}</div>
 
       </ul>

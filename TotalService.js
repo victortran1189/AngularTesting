@@ -6,12 +6,18 @@ myGamerApp.service('TotalService', function() {
           total += gamers[i].bounty;
       }
 
-      772489
       return total;
 
       }
 
 
 
+
+      this.getTotalCount = function (gamers){
+
+
+          return gamers.length;
+
+          }
 
 });
