@@ -32,7 +32,10 @@ myGamerApp.service('GamerService', function() {
             thumb:"img/pig.png"
           }
         ];
+
     }
+
+    this.testValue = 4;
 
 
     this.createNewGamerObject = function (newgamer){
