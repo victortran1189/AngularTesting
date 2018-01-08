@@ -18,18 +18,11 @@ module.exports = function(config) {
       'bower_components/angular/angular.js',
       'bower_components/angular-mocks/angular-mocks.js',
       'app.js',
-<<<<<<< HEAD
       'GamerService.js',
       'TotalService.js',
       'GamerService.spec.js',
       'testingAngularUnitSpec.js',
       'TotalService.spec.js',
-=======
-      'testingAngularUnitSpec.js',
-      'GamerService.js',
-      'TotalService.js',
-    
->>>>>>> 8667d6b6ca83a04eb1fe93febf480b07d89419c5
 
 
     ],
